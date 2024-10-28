@@ -1,0 +1,6 @@
+Cocada boa é uma aplicação web/mobile de vendas da Cocadade Cau
+a aplicação deve permitir que pessoas comprem cocadas
+a plicação deve permitir fçam orcamentos
+aplicação deve acompanhar o produto e se comunicar entre cliente e vendedor
+deve ser hospedada localmente e distribuida pela web
+deve usar uma framwork multiplataforma 

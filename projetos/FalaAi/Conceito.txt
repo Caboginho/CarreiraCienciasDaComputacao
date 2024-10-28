@@ -1,0 +1,12 @@
+Aplicação gnerica de vendas P2p
+intuito de relacionar cliente e forncecedor diretamete
+possibilita a contratação e integração de diversos passo para conclusao dos negocios
+podendo contratar serviços intermediarios, que tb serão produtos, a fim de completar as trasações
+portanto deve fornecer produtos buscados, e as propagandas devem ser aleatorias porem de acordo completaras necessidasdes dos usuariso
+todos são crientes e prestadores de serviço portanto o a aplicação é dividida nesses ois seguimentos
+a aplicação devfe permitir a criação de cronogramas e agendamentos para cumprir com as demandas
+cada serviço deve ser encaichado em prasos estipulaveis para que haja coesão no modelo
+quem entrega deve fornecer o tempo, que frabrica deve fornecer o tempo para disponibilidade e assom até chegar o produto final em mãoe e a trasação puder ser concluida
+as negociações finaceiras ficaram entre as partes, apesar que devem ser implementados meios gratuitos de pagamento
+como o pix.
+Essa aplicação visara remover os intermediarios que lucram com a mediação entre produtos.

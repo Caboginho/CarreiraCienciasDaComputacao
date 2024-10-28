@@ -1,0 +1,302 @@
+1. Configurar o Servidor Web no Computador
+Escolha um servidor web, como o Apache ou Nginx, para entregar os arquivos de 
+sua página. Se você estiver usando uma distribuição Linux, ambos podem ser 
+instalados facilmente via linha de comando:
+
+Apache :
+
+sudo apt update
+sudo apt install apache2
+
+Nginx :
+
+sudo apt update
+sudo apt install nginx
+Em sistemas Windows, você pode usar o XAMPP (que inclui o Apache) para 
+configurar o ambiente web.
+
+2. Configurar o Endereço IP
+IP Local : inicialmente, o servidor estará acessível apenas na sua rede local 
+usando o IP do seu computador. Para encontrar o IP:
+
+Linux : ip aNão use terminal.
+Windows : Não use ipconfignenhum prompt de comando.
+Para acessar o servidor na rede local, acesse http://seu-IP-localno navegador 
+de outro dispositivo conectado à mesma rede.
+
+IP Público : Para acessar fora da sua rede, você precisa do seu IP público. 
+Você pode encontrar seu IP público em sites como WhatIsMyIP .
+
+3. Configurar o Roteador (Port Forwarding)
+Acesse as configurações do seu roteador e configure o Port Forwarding para 
+direcionar o tráfego externo (porta 80 para HTTP ou 443 para HTTPS) para o IP 
+interno do seu computador. Assim, ao acessar seu IP público, o roteador será 
+redirecionado para o servidor web local.
+
+Passo a Passo :
+Acesse o painel de configuração do roteador (normalmente em http://192.168.1.1
+ou http://192.168.0.1).
+Encontre a opção Port Forwarding (ou Redirecionamento de Porta ).
+Configure para redirecionar a porta 80 (HTTP) para o IP local do seu computador .
+4. Obter um Nome de Domínio (Opcional)
+Caso você deseje um nome de domínio ao acessar pelo IP, você pode:
+
+Opção 1 : Registrar um domínio (há opções baratas e gratuitas).
+Opção 2 : Usar um serviço de DNS dinâmico (DDNS), como No -IP . O DDNS cria um 
+nome de domínio vinculado ao seu IP público, mesmo se ele for dinâmico.
+5. Testar o Acesso Externo
+Para testar, peça a um amigo ou use um dispositivo fora de sua rede para acessar
+seu IP público ou domínio.
+
+Nota Importante
+Por questões de segurança e estabilidade, esse tipo de servidor pode ser vulnerável a ataques. Certifique-se de:
+
+Manter o sistema atualizado.
+Limitar o acesso, se possível, ou aplicar autenticação para precisar de proteção
+de informações sensíveis.
+Essa configuração permite que você apresente seus projetos online de maneira 
+prática e econômica.
+
+Passo 1: Configurar o Servidor com XAMPP
+Instalar o XAMPP :
+
+Abra o instalador do XAMPP .
+Durante a instalação, selecione apenas os componentes essenciais para seu 
+servidor web: Apache(o servidor web), PHP, e MySQL(caso preciso de um banco de 
+dados).
+Conclua a instalação e abra o Painel de controle do XAMPP .
+Iniciar o Apache :
+
+No painel de controle do XAMPP, clique em Iniciar ao lado do Apache . Quando o 
+Apache estiver rodando, ele ficará verde, diminuindo que seu servidor esteja 
+ativo e escutando na porta 80.
+Para testar o servidor localmente, abra um navegador e acesse http://localhost. 
+Se o servidor estiver configurado corretamente, você verá uma página de boas-vindas do XAMPP.
+Passo 2: Colocar os Arquivos do Site no Servidor
+Nenhum diretório de instalação do XAMPP (por padrão, C:\xampp), abra a pasta 
+htdocs. Esta é a pasta pública do servidor Apache onde você coloca os arquivos 
+do seu site.
+Crie uma nova pasta dentro de htdocs, por exemplo, meusite. Coloque os arquivos 
+HTML, CSS, JavaScript e outros que compõem seu site dentro dessa pasta.
+Para acessar o site, abra um navegador e digite http://localhost/meusite. Isso 
+deve exibir sua página.
+Passo 3: Obter o Endereço IP Local
+Para configurar o acesso pela rede local e permitir que outros dispositivos 
+conectados ao seu Wi-Fi possam ver o site:
+
+Abra o Prompt de Comando e digite:
+bater
+
+ipconfig
+
+Anote o endereço IPv4 da sua rede. Este é o endereço IP local do seu computador 
+(por exemplo, 192.168.1.100).
+Em outro dispositivo conectado ao mesmo Wi-Fi, abra um navegador e acesse 
+http://seu-IP-local/meusite(substituindo seu-IP-localpelo IP que você anotou). 
+Você deve ver seu site carregando nesse dispositivo.
+Passo 4: Configurar o Port Forwarding para Acesso Externo
+Para permitir o acesso a partir de outras redes, como 4G ou outra conexão, 
+configure o roteador para redirecionar o tráfego externo para o seu servidor:
+
+Acesse as Configurações do Roteador :
+
+No navegador, digite o endereço IP do roteador (normalmente, 
+http://192.168.1.1ou http://192.168.0.1) e faça login com suas credenciais 
+de administrador.
+Configurar Port Forwarding :
+
+Procure pela seção Port Forwarding , Redirecionamento de Portas ou Servidor 
+Virtual (a localização exata pode variar de acordo com o modelo do roteador).
+Adicione uma nova regra para redirecionar:
+Porta Externa : 80 (porta padrão HTTP).
+IP de Destino : O IP local do seu computador (anotado no Passo 3).
+Porta Interna : 80.
+Salve as configurações.
+Obter seu IP Público :
+
+Acesse um site como WhatIsMyIP para descobrir seu IP público. Este é o endereço 
+que permitirá acessar seu site externamente.
+Testar o Acesso Externo :
+
+Tente acessar seu site a partir de um dispositivo conectado a uma rede diferente 
+usando o IP público: http://seu-IP-publico/meusite.
+Nota : Alguns provedores de internet bloqueiam a porta 80 para conexões de 
+entrada. Se seu provedor bloquear essa porta, você pode usar uma porta 
+alternativa (ex.: 8080) no roteador e configurar o Apache para usá-la.
+Dica de Segurança
+Ao expor seu computador na internet, ele se torna vulnerável a ataques.
+Considere essas práticas:
+
+Configure um firewall para restringir acessos indesejados.
+Mantenha o XAMPP atualizado.
+Não hospede dados sensíveis.
+
+No XAMPP, o Apache é configurado para usar arquivos diretamente da pasta 
+htdocspor padrão, mas você pode especificar uma pasta diferente alterando 
+a configuração no arquivo de configuração do Apache. Vou te mostrar como 
+fazer isso para que o Apache aponte para uma pasta personalizada.
+
+Passo a Passo para Especificar uma Pasta Personalizada
+Escolha ou Crie a Pasta Personalizada
+
+Decida onde deseja armazenar os arquivos do site. Por exemplo, você pode 
+criar uma pasta chamada meus-projetosem qualquer lugar, como C:\meus-projetos.
+Editar o Arquivo de Configuração do Apache
+
+Abra o XAMPP e, no Control Panel , clique em Config ao lado do módulo
+Apache e selecione httpd.conf . Este é o arquivo principal de configuração 
+do Apache.
+Encontre a linha:
+
+DocumentRoot "C:/xampp/htdocs"
+e Substitua o caminho da pasta que você criou, por exemplo:
+
+DocumentRoot "C:/meus-projetos"
+Logo abaixo, altere também o caminho de <Directory>, de:
+
+<Directory "C:/xampp/htdocs">
+pára:
+
+<Directory "C:/meus-projetos">
+Configurar as Permissões
+
+-se de que as permissões estão definidas para permitir que o Apache acesse os 
+arquivos. Na seção <Directory "C:/meus-projetos">, verifique se as opções 
+Require all grantedestão presentes:
+
+<Directory "C:/meus-projetos">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+Salvar e reiniciar o Apache
+
+Salve as alterações no httpd.conf.
+No XAMPP Control Panel, pare e reinicie o Apache para que as novas configurações
+entrem em vigor.
+Testar a Nova Pasta
+
+Coloque os arquivos do seu site na nova pasta ( C:\meus-projetosneste exemplo).
+Acesse http://localhost no navegador. Se tudo estiver configurado corretamente, 
+o Apache deverá exibir o conteúdo do seu site a partir da pasta especificada.
+Nota
+Com essa configuração, o Apache agora usará uma pasta que você especificou como 
+raiz do servidor web, ou que facilita a organização de seus projetos sem a 
+necessidade de usar htdocsdiretamente.
+
+Se o modo local estiver funcionando, mas o acesso online não estiver disponível, 
+isso geralmente é causado por uma das seguintes razões:
+
+Configuração de Port Forwarding no Roteador : Confirme se a configuração de Port 
+Forwarding está redirecionando corretamente a porta 80 (ou uma porta alternativa,
+como 8080) para o endereço IP do seu computador.
+
+Verifique o IP Público e o IP Local :
+
+-se de estar usando o IP público correto. Para confirmá-lo, visite um site como 
+WhatIsMyIP .
+Garanta que o IP local especificado no Port Forwarding seja o IP interno do seu 
+computador (o mesmo que funciona para acesso local).
+Firewall do Windows :
+
+O firewall do Windows pode estar bloqueando o acesso ao servidor Apache para 
+conexões externas. Para corrigir isso:
+Abra o Painel de Controle e vá até Sistema e Segurança > Firewall do Windows 
+Defender > Configurações Avançadas .
+Em Regras de Entrada , procure por qualquer regra para o Apache ou para o 
+XAMPP e edite para permitir acesso externo. Se não houver uma regra para Apache,
+crie uma nova.
+Clique em Nova Regra , selecione Porta e configure para permitir TCP na porta 80 
+(ou 8080, se você estiver usando essa porta).
+Provedor de Internet :
+
+Alguns provedores de internet bloqueiam conexões de entrada na porta 80 por 
+padrão para evitar que usuários comuns hospedem servidores. Nesse caso:
+Configure o Apache para escutar em uma porta diferente (por exemplo, 8080).
+Para isso, no arquivo httpd.conf, altere a linha Listen 80para Listen 8080.
+Salve e reinicie o Apache.
+Atualize o redirecionamento de portas do roteador para uma nova porta.
+Acesse o site usando http://seu-IP-publico:8080.
+Testar Conexão Externa :
+
+Para testar, peça a alguém para acessar seu IP público de outra rede ou usar 
+uma rede 4G/5G do seu próprio celular.
+Essas etapas devem ajudar a solucionar o problema de acesso online. Se algo 
+não funcionar, compartilhe o que aconteceu para uma orientação mais específica.
+
+1. Verifique o encaminhamento de porta
+Redirecionamento da Porta no Roteador : Confirme novamente que o Port Forwarding 
+no seu roteador está configurado corretamente:
+A porta externa e a porta interna devem ser definidas como 80 (ou 8080, se você 
+configurar uma porta alternativa).
+O IP local no Port Forwarding deve estar apontando para o IP interno do seu 
+computador. Esse IP pode ter mudado, então vale verificar novamente o IP atual 
+com ipconfig.
+2. Configure o Apache para uma Porta Alternativa (8080)
+Em alguns casos, os provedores de internet bloqueiam a porta 80 para conexões 
+de entrada. Tente usar uma porta alternativa:
+
+Abra o arquivo httpd.confdo Apache (no XAMPP, vá para Config > Apache 
+(httpd.conf)).
+Mude a linha Listen 80para Listen 8080.
+Encontre também a linha ServerName localhost:80e altere para ServerName 
+localhost:8080.
+Salve o arquivo e reinicie o Apache.
+No roteador, configure o Port Forwarding para redirecionar a porta 8080 
+para o IP do seu computador e teste acessando com http://seu-IP-publico:8080.
+
+3. Teste o Acesso Externo com Rede Diferente
+Rede de Dados Móveis : Conecte-se com um celular usando uma rede de dados móveis
+(4G/5G) e tente acessar http://seu-IP-publico:8080. Isso ajuda a evitar
+restrições locais que o roteador pode aplicar ao loopback (autoteste da
+própria rede).
+4. Verifique as restrições do Provedor de Internet
+Alguns provedores de internet bloqueiam o tráfego de entrada de todas as portas 
+para assinaturas residenciais. Uma forma de verificar isso é perguntar ao 
+suporte do provedor se ele permite hospedar um servidor com portas abertas
+para a internet.
+5. Usar um serviço de túnel como ngrok
+Se o bloqueio continuar, um serviço como ngrok pode ajudar a criar um túnel 
+entre o seu servidor local e a internet:
+Baixe e instale o ngrok.
+Sem terminal, execute o comando:
+
+ngrok http 80
+
+O ngrok fornecerá um endereço público (por exemplo, http://randomstring.ngrok.i0
+) que redirecionará para o seu servidor local.
+Essas etapas adicionais devem ajudar a diagnosticar se o problema estiver na
+configuração local, no roteador ou nas restrições do provedor de internet.
+
+Mascarar uma URL do ngrok usando um serviço de redirecionamento de URLs ou um
+subdomínio gratuito. Vou te mostrar algumas opções:
+1. Usar um Redirecionador de URL Gratuito
+TinyURL ou Bit.ly : Serviços como TinyURL e Bit .ly permitem criar URLs 
+curtas e mais amigáveis ​​que redirecionam para a URL do ngrok. Isso não 
+permite um domínio personalizado, mas o link ficará mais limpo.
+Como fazer :
+Acesse o site do TinyURL ou Bit.ly.
+Cole o link do ngrok e crie uma URL curta.
+O link curto, como https://tinyurl.com/seulink, baixe ao seu endereço ngrok.
+2. Usar um Subdomínio Gratuito com um Serviço de DNS
+Freenom : No Freenom , você pode registrar um domínio gratuitamente com 
+extensões como .tk, .ml, .ga, .cf, ou .gq.
+Como fazer :
+Registre um domínio gratuitamente no Freenom.
+Vá até a seção de redirecionamento de URLs do Freenom e configure para
+redirecionar seu domínio para o link ngrok.
+3. Usar um Serviço de Redirecionamento de Subdomínio (com No-IP)
+No-IP : O No -IP oferece subdomínios gratuitos que podem ser redirecionados
+para o ngrok.
+Como fazer :
+Crie uma conta gratuita no No-IP.
+Registre um subdomínio como meusite.no-ip.org.
+Configure o redirecionamento de URL no painel do No-IP para apontar para o 
+link ngrok.
+Essas opções tornam o link do ngrok mais legível e amigável sem custo, 
+permitindo que você distribua uma URL mais profissional.
+
+chamar cmd com comando do tuneo ngrok.exe
+tokem           (ngrok config add-authtoken )
+start tuneo     (ngrok http http://localhost:80)
+
