@@ -3,3 +3,4 @@ venv/
 gitHelp.txt
 requirements.txt
 myenv/
+__pycache__/
