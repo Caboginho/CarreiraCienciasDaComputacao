@@ -1,7 +1,4 @@
-.venv/
-myenv/
 .vscode/
 gitHelp.txt
 requirements.txt
-venv/
 __pycache__/
