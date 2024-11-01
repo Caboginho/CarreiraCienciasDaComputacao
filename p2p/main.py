@@ -1,6 +1,6 @@
 # main.py
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException,Path
 from sqlalchemy.orm import Session
 from database import engine, Base, get_db
 import crud, schemas, models
@@ -15,6 +15,39 @@ Base.metadata.create_all(bind=engine)
 @app.get("/")
 async def root():
     return {"message": "Hello, World"}
+
+@app.put("/products/{product_id}", response_model=Product)
+def update_product(
+    product_id: int,
+    updated_product: Product,
+    db: Session = Depends(get_db)
+):
+    db_product = db.query(ProductDB).filter(ProductDB.id == product_id).first()
+    if not db_product:
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+
+    # Atualizando os atributos do produto
+    db_product.name = updated_product.name
+    db_product.description = updated_product.description
+    db_product.price = updated_product.price
+    db_product.category = updated_product.category
+
+    db.commit()  # Commit para salvar as mudanças
+    db.refresh(db_product)  # Atualiza o objeto para refletir as mudanças
+
+    return db_product
+
+@app.delete("/products/{product_id}", response_model=dict)
+def delete_product(product_id: int, db: Session = Depends(get_db)):
+    db_product = db.query(ProductDB).filter(ProductDB.id == product_id).first()
+    if not db_product:
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+
+    db.delete(db_product)  # Remove o produto
+    db.commit()  # Salva a exclusão no banco de dados
+
+    return {"message": "Produto deletado com sucesso"}
+
 
 @app.post("/products/", response_model=Product)
 def create_product(product: Product, db: Session = Depends(get_db)):
