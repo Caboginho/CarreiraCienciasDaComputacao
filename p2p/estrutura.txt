@@ -1,0 +1,9 @@
+project/
+│
+├── main.py               # Arquivo principal para iniciar a API
+├── models.py             # Definição dos modelos de dados
+├── database.py           # Configuração do banco de dados
+├── schemas.py            # Schemas/Pydantic Models para validação
+├── crud.py               # Operações de banco de dados (CRUD)
+├── auth.py               # Funções de autenticação e geração de tokens
+└── .env                  # Arquivo para variáveis de ambiente

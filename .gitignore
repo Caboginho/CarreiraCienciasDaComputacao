@@ -1,3 +1,5 @@
 venv/
 .vscode/
 gitHelp.txt
+requirements.txt
+myenv/
